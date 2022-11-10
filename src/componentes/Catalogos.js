@@ -6,12 +6,13 @@ import Categorias from "../elementos/Categoria";
 import Footer from "../elementos/footer";
 import {db} from './../firebase/firebaseConfing';
 import { collection, onSnapshot } from "firebase/firestore";
-import cargando from './../assets/ezgif.com-gif-maker.gif';
+import Cargando from "./Cargando";
 
 
 const Catalogos = () => {
 
     const [catalogos, cambiarCatalogos] = useState([]);
+    const [cargando, cambiarCargando] = useState(true);
 
     useEffect(
         ()=>{
@@ -31,6 +32,10 @@ const Catalogos = () => {
     
     return (
         <>
+            {
+                cargando &&
+                    <Cargando />
+            }
             <Helmet>
                 <title>Categorias</title>
             </Helmet>
@@ -39,14 +44,12 @@ const Catalogos = () => {
                 <h2>Categorias</h2>
                 <ContenedorCatalogos>
                     {
-                        catalogos.length !== 0 ?
+                        catalogos.length !== 0 &&
                             catalogos.map((catalogo)=>{
                                 return(
                                     <Categorias title={catalogo.title} fondo={catalogo.background} index={catalogo.index}/>
                                 )
                             })
-                        :
-                            <img src={cargando} style={{width: "80px", paddingBottom: "33px"}} alt="Cargando"/>
                     }
                 </ContenedorCatalogos>
             </Main>

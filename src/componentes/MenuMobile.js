@@ -7,7 +7,7 @@ import iconoWhatsapp from './../assets/004-whatsapp.png';
 import { Link } from "react-router-dom";
 
 const ContenedorMenu = styled.div`
-    width: 160px;
+    width: 170px;
     height: 210px;
     border-radius: 0 0 0 20px;
     display: flex;
@@ -18,7 +18,7 @@ const ContenedorMenu = styled.div`
     right: -300px;
     z-index: 101;
     overflow: hidden;
-    transition: 1s all ease;
+    transition: .7s all ease;
     .enlaces {
         width: 100%;
         height: 80%;
@@ -28,27 +28,28 @@ const ContenedorMenu = styled.div`
         text-align: center;
         a{
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
             color: #000;
             text-decoration: none;
+            font-size: 20px;
         }
     }
     .redes{
         width: 100%;
         display: flex;
         justify-content: center;
-        margin-top: 60px;
+        margin-top: 30px;
         .icon{
-            width: 23px;
-            height: 23px;
+            width: 33px;
+            height: 33px;
             margin-right: 9px;
         }
     }
     .img{
         width: 100%;
         position: absolute;
-        bottom: -96px;
-        left: 10px;
+        bottom: -85px;
+        left: 8px;
     }
 `
 

@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import fondo from './../assets/interlaced.png';
 
 const Main = styled.main`
     display: flex;
@@ -8,6 +9,7 @@ const Main = styled.main`
     height: auto;
     position: relative;
     top: 90px;
+    background-image: url(${fondo});
 
     ${props => props.categorias && css`
         flex-direction: column;
@@ -16,14 +18,14 @@ const Main = styled.main`
         h2{
             margin-top: 33px;
             margin-bottom: 33px;
-            color: #fff;
+            color: #000;
         }
         @media screen and (min-width: 800px){
             h2{
                 margin-top: 33px;
                 margin-bottom: 33px;
                 font-size: 40px;
-                color: #fff;
+                color: #000;
             } 
         }
     `}
@@ -32,7 +34,7 @@ const Main = styled.main`
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-        top: 130px;
+        top: 80px;
     }
 `
 const ContenedorCatalogos = styled.div`
@@ -42,6 +44,7 @@ const ContenedorCatalogos = styled.div`
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    padding-bottom: 30px;
     a{
         color: #000;
         text-decoration: none;

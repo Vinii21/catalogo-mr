@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import cargando from './../assets/ezgif.com-gif-maker.gif';
 
 const ContenedorCategorias = styled.div`
     display: flex;
@@ -35,38 +34,14 @@ const ContenedorCategorias = styled.div`
 `
 
 const Categorias = ({title, fondo, index}) => {
-
-    const [verificar, cambiarVerificar] = useState(true);
-
-    useEffect(()=>{
-        cambiarVerificar(false);
-    }, [])
-
-
-    setTimeout(()=>{
-        cambiarVerificar(true);
-    }, 1000)
-    
-
     return (
-        <>
-            {
-                verificar ? 
-                    <Link to={`/catalogos/${title}/${index}`}>
-                        <ContenedorCategorias>
-                                <div className="caja" style={{backgroundImage: `url(${fondo})` }}>
-                                    <h3>{title}</h3>
-                                </div>
-                        </ContenedorCategorias>
-                    </Link>
-                :
-                        <ContenedorCategorias>
-                                <div className="caja" style={{backgroundImage: `url(${cargando})`, backgroundSize: "30%" }}>
-                                    
-                                </div>
-                        </ContenedorCategorias>
-            }
-        </>
+            <Link to={`/catalogos/${title}/${index}`}>
+                <ContenedorCategorias>
+                    <div className="caja" style={{backgroundImage: `url(${fondo})` }}>
+                        <h3>{title}</h3>
+                    </div>
+                </ContenedorCategorias>
+            </Link>
     );
 }
  

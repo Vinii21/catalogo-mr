@@ -11,11 +11,11 @@ const ContenedorInfo = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 5px;
-    font-family: ${theme.Fuente2};
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 15px;
+    padding: 10px;
+    font-family: ${theme.Fuente1};
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 16px;
     text-align: center;
     color: ${theme.colorClaro};
 
@@ -27,14 +27,16 @@ const ContenedorInfo = styled.div`
     ${props => props.colorUno && css`
         background-color: ${theme.colorUno};
         @media screen and (min-width: 800px){
-            background-color: ${theme.colorUnoAlfa};
+            background-image: url(${theme.fondoClaro});
+            box-shadow: 4px 7px 20px 1px #000;
         }
     `}
 
     ${props => props.colorDos && css`
         background-color: ${theme.colorDos};
         @media screen and (min-width: 800px){
-            background-color: ${theme.colorDosAlfa};
+            background-image: url(${theme.fondoClaro});
+            box-shadow: 4px 7px 20px 1px #000;
         }
     `}
 
@@ -42,19 +44,17 @@ const ContenedorInfo = styled.div`
         flex-direction: row;
         width: 100%;
         height: 65px;
-        background-color: ${theme.colorTres};
+        background: ${theme.colorTres};
         text-align: left;
         padding: 20px;
-        font-weight: 600;
-        font-size: 12px;
         color: #000;
         img{
             margin-top: 0px;
             margin-left: 10px;
         }
         @media screen and (min-width: 800px){
-            background-color: ${theme.colorTresAlfa};
-            color: #fff;
+            background-image: url(${theme.fondoClaro});
+            box-shadow: 4px 7px 20px 1px #000;
         }
     `}
 
@@ -65,10 +65,13 @@ const ContenedorInfo = styled.div`
         font-size: 18px;
         padding: 20px;
         line-height: 20px;
-        border-radius: 24px 0px 10px 0px;
+        transition: .5s ease all;
         img{
             margin-top: 30px;
             width: 70px; 
+        }
+        &:hover{
+            translate: 0px -10px;
         }
 
         ${props => props.cajaTransporte && css`
@@ -76,6 +79,7 @@ const ContenedorInfo = styled.div`
             height: 200px;
             margin: 0 auto;
             margin: 20px 15px 20px 0px;
+            color: #fff;
         `
     }
 
@@ -104,7 +108,7 @@ const CajasInfo = () => {
             </ContenedorInfo>
             <ContenedorInfo cajaTransporte>
                 <p>Transportamos a todo el país a muy bajo costo.</p>
-                <img src={iconoCamion} alt="" />
+                <img src={iconoCamion} alt="Icono del camion" />
             </ContenedorInfo>
         </>
     );

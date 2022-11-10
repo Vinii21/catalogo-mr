@@ -9,8 +9,9 @@ import Footer from './../elementos/footer';
 import Foto from "../elementos/foto";
 import { useParams } from "react-router-dom";
 import {db} from './../firebase/firebaseConfing';
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot} from "firebase/firestore";
 import cargando from './../assets/ezgif.com-gif-maker.gif';
+import fondo from './../assets/interlaced.png';
 
 const Galeria = () => {
     const [mostrarModal, cambiarMostrarModal] = useState(false);
@@ -55,11 +56,11 @@ const Galeria = () => {
                     albun.length !== 0 ? 
                         albun.map((item)=>{
                             return(
-                                <Foto cambiarNombre={cambiarNombre} nombre={item.name} cambiarFondo={cambiarFondo} fondo={item.background} cambiarMostrarModal={cambiarMostrarModal} mostrarModal={mostrarModal}/>
+                                <Foto cambiarNombre={cambiarNombre} cambiarFondo={cambiarFondo} fondo={item.background} cambiarMostrarModal={cambiarMostrarModal} mostrarModal={mostrarModal}/>
                             )
                         })
                     :
-                        <img src={cargando} style={{width: "80px", paddingBottom: "33px"}}/>
+                        <img src={cargando} style={{width: "80px", paddingBottom: "33px"}} alt="Cargando"/>
                 }
                 </Contenedorfotos>
             </ContendorGaleria>
@@ -79,8 +80,7 @@ const ContendorGaleria = styled.div`
     height: 100%;
     padding-top: 30px;
     padding-bottom: 30px;
-
-    
+    background-image: url(${fondo});
 `
 
 const ContenedorTitulo = styled.div`
@@ -93,9 +93,9 @@ const ContenedorTitulo = styled.div`
         width: 100%;
         text-align: center;
         font-family: ${theme.Fuente1};
-        font-weight: 400;
+        font-weight: 600;
         font-size: 50px;
-        color: #fff;
+        color: #000;
     }
     span{
         text-align: center;

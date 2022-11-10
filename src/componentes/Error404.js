@@ -1,10 +1,10 @@
 import React from "react";
+import Cargando from './Cargando';
 
 const Error404 = () => {
+
     return (
-        <>
-            <h1>error 404</h1>
-        </>
+        <Cargando />
     );
 }
  

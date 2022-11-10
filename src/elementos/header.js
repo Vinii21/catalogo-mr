@@ -5,7 +5,6 @@ import logo from "./../assets/logo.svg";
 import iconoMueble from "./../assets/001-gabinete.png";
 import MenuMobile from "../componentes/MenuMobile";
 import { Link, useNavigate } from "react-router-dom";
-import fondoHedaer from './../assets/triangles_pattern.png';
 
 const Header = () => {
     const [num, cambiarNum] = useState(false);
@@ -42,11 +41,11 @@ const Header = () => {
                 <ContenedorLogo onClick={volverHome}/>
                 <ContendorIconoNav>
                     <img onClick={()=>handlePosition(num)} id="iconMueble" src={iconoMueble} alt="Icono menu"/>
-                    <nav className="menu">
-                        <Link to="/sobre-nosotros">Sobre Nosotros</Link>
-                        <Link to="/catalogos">Catalogos</Link>
-                    </nav>
                 </ContendorIconoNav>
+                <ContenedorMenu>
+                    <Link to="/sobre-nosotros">Sobre Nosotros</Link>
+                    <Link to="/catalogos">Catalogos</Link>
+                </ContenedorMenu>
             </ContenedorHeader>
             <MenuMobile estadoMueble={num}/>
         </>
@@ -61,10 +60,13 @@ const ContenedorHeader = styled.header`
     z-index: 100;
     width: 100%;
     height: 90px;
-    background-image: url(${fondoHedaer});
-    box-shadow: 0px 6px 30px #000;
+    background: url(${theme.fondoTelaOs});
+    box-shadow: 0px -1px 10px #000;
+    padding: 5px;
     @media screen and (min-width: 800px){
-        height: 130px;
+        height: 80px;
+        justify-content: flex-start;
+        padding: 0px;
     }
 `
 
@@ -80,13 +82,14 @@ const ContenedorLogo = styled.div`
     background-size: contain;
     
     @media screen and (min-width: 800px){
-        width: 130px; 
+        width: 110px;
+        height: 80%;
     }
 `
 
 const ContendorIconoNav = styled.div`
-    width: 70px;
-    height: 40px;
+    width: 60px;
+    height: 42px;
     margin-right: 30px;
     border-bottom: 1px solid #000;
     position: relative;
@@ -95,41 +98,43 @@ const ContendorIconoNav = styled.div`
         width: 34px;
         height: 32px;
         position: absolute;
-        top: 8px;
+        top: 10px;
         right: 0px;
         left: auto;
     }
-
-    .menu{
+    @media screen and (min-width: 800px){
         display: none;
     }
+`
 
+const ContenedorMenu = styled.div`
+    display: none;
     @media screen and (min-width: 800px){
-        width: 25%;
-        height: auto;
-        margin-right: 30px;
-        border-bottom: none;
-        img{
-            display: none;
-        }
-        .menu{
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        width: 40%;
+        a{  
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
-            a{
-                color: #000;
-                text-decoration: underline;
-                font-family: ${theme.Fuente1};
-                font-size: 18px;
-                font-weight: 500;
-            }
-            a:hover{
-                text-decoration: none;
-                color: ${theme.colorUno};
-            }
+            padding: 60px 10px 0px 10px;
+            color: #fff;
+            font-family: ${theme.Fuente1};
+            text-transform: uppercase;
+            font-weight: 400;
+            text-decoration: none;
+            height: 100%;
+            border-bottom: 4px solid transparent;
+            padding: 0px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        a:hover{
+            border-bottom: 3px solid ${theme.colorUno};
+            background-color: ${theme.colorDosAlfa};
         }
     }
-
 `
  
 export default Header;

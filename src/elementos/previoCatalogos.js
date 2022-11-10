@@ -25,14 +25,15 @@ const ContenedorCarrusel = styled.div`
         position: relative;
         cursor: pointer;
         button{
-                width: 140px;
-                height: 30px;
+                width: 200px;
+                height: 50px;
                 text-align: left;
-                padding-left: 5px;
+                padding-left: 10px;
                 background-color: ${theme.colorUno};
                 border: 2px solid ${theme.colorClaro};
                 border-radius: 6px;
                 font-family: ${theme.Fuente2};
+                font-size: 18px;
                 font-weight: 600;
                 cursor: pointer;
                 transition: 1s ease-out all;
@@ -47,23 +48,19 @@ const ContenedorCarrusel = styled.div`
     }
 
     @media screen and (min-width: 800px){
-        margin-top: 60px;
-        margin-bottom: 60px;
-        width: 1000px;
+        width: 100%;
         height: 400px;
-        border: 5px solid #fff;
-        border-radius: 10px 0px 10px 0px;
+        margin-top: 50px;
         div.filtro{
-            backdrop-filter: blur(3px);
-            -webkit-backdrop-filter: blur(3px);
-            border-radius: 10px 0px 10px 0px;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
         }
     }
 `
 
 const Svg = styled(iconoCatalogos)`
-    width: 30px;
-    height: 30px;
+    width: 45px;
+    height: 50px;
     position: absolute;
     right: 0;
     background-color: ${theme.colorClaro};
