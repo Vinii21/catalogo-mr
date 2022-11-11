@@ -9,22 +9,36 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 const Header = () => {
     const [activarCatalogos, cambiarActivarCatalogos] = useState(false);
     const [num, cambiarNum] = useState(false);
-    const parametro = useParams();
+    const {catalogos} = useParams();
     const navigate = useNavigate();
 
+    console.log(catalogos)
+
     useEffect(()=>{
-        if(parametro.catalogos === 'catalogos'){
+        if(catalogos === 'catalogos'){
             cambiarActivarCatalogos(true)
-        } else if (parametro.sobrenosotros === 'sobre-nosotros'){
+        } else{
+            cambiarActivarCatalogos(false)
+        }/* else if (parametro.sobrenosotros === 'sobre-nosotros'){
             console.log('existo')
-        }
+        } */
     },[])
 
-    const comprobarSelecxcionado = () => {
-        if(parametro.condicion === 'catalogos'){
-            return ''
-        } else {
-            cambiarActivarCatalogos(false);
+    const comprobarSeleccionadoPositivo = () => {
+        if(catalogos) {
+            if(activarCatalogos === true){
+                cambiarActivarCatalogos(false);
+                console.log('sirvo false')
+            }
+        }
+    }
+
+    const comprobarSeleccionadoNegativo = () => {
+        if(catalogos){
+            if(activarCatalogos === false){
+                cambiarActivarCatalogos(true);
+                console.log('sirvo true')
+            }
         }
     }
 
@@ -61,7 +75,7 @@ const Header = () => {
                     <img onClick={()=>handlePosition(num)} id="iconMueble" src={iconoMueble} alt="Icono menu"/>
                 </ContendorIconoNav>
                 <ContenedorMenu>
-                    <Link to="/MR/sobre-nosotros" onMouseOver={()=>comprobarSelecxcionado()} onMouseOut={()=>comprobarSelecxcionado()}>Sobre Nosotros</Link>
+                    <Link to="/MR/sobre-nosotros" onMouseOver={()=>comprobarSeleccionadoPositivo()} onMouseOut={()=>comprobarSeleccionadoNegativo()}>Sobre Nosotros</Link>
                     {
                         activarCatalogos ?
                          <Link to="/catalogos" className="activate">Catalogos</Link>
