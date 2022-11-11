@@ -1,21 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState } from "react";
 import styled from "styled-components";
 import theme from "../theme";
 import logo from "./../assets/logo.svg";
 import iconoMueble from "./../assets/001-gabinete.png";
 import MenuMobile from "../componentes/MenuMobile";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 const Header = () => {
-    const [activar, cambiarActivar] = useState(false);
+    const [activarCatalogos, cambiarActivarCatalogos] = useState(false);
     const [num, cambiarNum] = useState(false);
+    const parametro = useParams();
     const navigate = useNavigate();
 
     useEffect(()=>{
-        if(navigate.condicion === 'Catalogos'){
-            cambiarActivar(true)
+        if(parametro.catalogos === 'catalogos'){
+            cambiarActivarCatalogos(true)
+        } else if (parametro.sobrenosotros === 'sobre-nosotros'){
+            console.log('existo')
         }
     },[])
+
+    const comprobarSelecxcionado = () => {
+        if(parametro.condicion === 'catalogos'){
+            return ''
+        } else {
+            cambiarActivarCatalogos(false);
+        }
+    }
 
     const handlePosition = (x) => {
         if(x === false){
@@ -50,9 +61,9 @@ const Header = () => {
                     <img onClick={()=>handlePosition(num)} id="iconMueble" src={iconoMueble} alt="Icono menu"/>
                 </ContendorIconoNav>
                 <ContenedorMenu>
-                    <Link to="/sobre-nosotros" onMouseOver={()=>cambiarActivar(false)} onMouseOut={()=>cambiarActivar(true)}>Sobre Nosotros</Link>
+                    <Link to="/MR/sobre-nosotros" onMouseOver={()=>comprobarSelecxcionado()} onMouseOut={()=>comprobarSelecxcionado()}>Sobre Nosotros</Link>
                     {
-                        activar ?
+                        activarCatalogos ?
                          <Link to="/catalogos" className="activate">Catalogos</Link>
                         :
                          <Link to="/catalogos">Catalogos</Link>

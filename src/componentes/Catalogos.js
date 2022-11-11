@@ -14,6 +14,7 @@ const Catalogos = () => {
 
     const [catalogos, cambiarCatalogos] = useState([]);
     const {cargando, cambiarCargando} = useContext(ContextoCargando);
+    const [seleccionado, cambiarSeleccionado] = useState(false);
 
     setTimeout(()=>{
         cambiarCargando(false)
@@ -44,7 +45,7 @@ const Catalogos = () => {
             <Helmet>
                 <title>Categorias</title>
             </Helmet>
-            <Header/>
+            <Header selccionado={seleccionado} cambiarSeleccionado={cambiarSeleccionado}/>
             <Main categorias>
                 <h2>Categorias</h2>
                 <ContenedorCatalogos>

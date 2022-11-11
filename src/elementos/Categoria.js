@@ -52,7 +52,7 @@ display: flex;
 
 const Categorias = ({title, fondo, index}) => {
     return (
-            <Link to={`/catalogos/${title}/${index}`}>
+            <Link to={`/catalogo/${title}/${index}`}>
                 <ContenedorCategoria className="caja" style={{backgroundImage: `url(${fondo})` }}>
                     <h3>{title}</h3>
                 </ContenedorCategoria>

@@ -22,9 +22,9 @@ root.render(
         <ProveedorCargando>
           <Routes>
             <Route path='/' element={<App />}/>
-            <Route path='/:condicion' element={<Catalogos />}/>
-            <Route path='/catalogos/:id/:index' element={<Galeria />}/>
-            <Route path='/sobre-nosotros' element={<Cargando />}/>
+            <Route path='/:catalogos' element={<Catalogos />}/>
+            <Route path='/catalogo/:id/:index' element={<Galeria />}/>
+            <Route path='/MR/:sobrenosotros' element={<Cargando />}/>
             <Route path='/*' element={<Error404 />}/>
           </Routes>
         </ProveedorCargando>
