@@ -74,7 +74,7 @@ const PrevioCatalogos = () => {
         <ContenedorCarrusel>
             <div className="filtro">
                 <div className="btn">
-                    <button type="button" className="btnCatalogos"><Link to={"/catalogos"}>Ver Cátalogos</Link></button>
+                    <button type="button" className="btnCatalogos"><Link to={"/Catalogos"}>Ver Cátalogos</Link></button>
                     <Svg/>
                 </div>
             </div>

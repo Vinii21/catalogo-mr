@@ -71,7 +71,7 @@ const ContenedorFooter = styled.footer`
     }
 
     @media screen and (min-width: 800px){
-        height: 200px;
+        height: 220px;
         top: 80px;
         padding-bottom: 3px;
         .info{

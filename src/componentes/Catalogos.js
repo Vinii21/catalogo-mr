@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Helmet } from "react-helmet";
 import Header from "../elementos/header";
 import {Main, ContenedorCatalogos} from "../elementos/main";
@@ -7,12 +7,17 @@ import Footer from "../elementos/footer";
 import {db} from './../firebase/firebaseConfing';
 import { collection, onSnapshot } from "firebase/firestore";
 import Cargando from "./Cargando";
+import { ContextoCargando } from "../contexto/contextoCargando";
 
 
 const Catalogos = () => {
 
     const [catalogos, cambiarCatalogos] = useState([]);
-    const [cargando, cambiarCargando] = useState(true);
+    const {cargando, cambiarCargando} = useContext(ContextoCargando);
+
+    setTimeout(()=>{
+        cambiarCargando(false)
+    },5000)
 
     useEffect(
         ()=>{
@@ -47,7 +52,7 @@ const Catalogos = () => {
                         catalogos.length !== 0 &&
                             catalogos.map((catalogo)=>{
                                 return(
-                                    <Categorias title={catalogo.title} fondo={catalogo.background} index={catalogo.index}/>
+                                    <Categorias key={catalogo.title} title={catalogo.title} fondo={catalogo.background} index={catalogo.index}/>
                                 )
                             })
                     }

@@ -10,8 +10,8 @@ import Foto from "../elementos/foto";
 import { useParams } from "react-router-dom";
 import {db} from './../firebase/firebaseConfing';
 import { collection, onSnapshot} from "firebase/firestore";
-import cargando from './../assets/ezgif.com-gif-maker.gif';
 import fondo from './../assets/interlaced.png';
+import Cargando from './Cargando';
 
 const Galeria = () => {
     const [mostrarModal, cambiarMostrarModal] = useState(false);
@@ -41,6 +41,7 @@ const Galeria = () => {
                 <title>Galeria</title>
                 <link rel='shortcut icon' href={favicon} type='image/x-icon'/>
             </Helmet>
+            <Cargando />
             {
                 mostrarModal && 
                 <ModalFormularioWhatsapp nombre={nombre} cambiarMostrarModal={cambiarMostrarModal} mostrarModal={mostrarModal} fondo={fondo}/>
@@ -49,18 +50,15 @@ const Galeria = () => {
             <ContendorGaleria>
                 <ContenedorTitulo>
                     <h2>{parametro.id}</h2>
-                    {/* <span>datos</span> */}
                 </ContenedorTitulo>
                 <Contenedorfotos>
                 {
-                    albun.length !== 0 ? 
+                    albun.length !== 0 && 
                         albun.map((item)=>{
                             return(
                                 <Foto cambiarNombre={cambiarNombre} cambiarFondo={cambiarFondo} fondo={item.background} cambiarMostrarModal={cambiarMostrarModal} mostrarModal={mostrarModal}/>
                             )
                         })
-                    :
-                        <img src={cargando} style={{width: "80px", paddingBottom: "33px"}} alt="Cargando"/>
                 }
                 </Contenedorfotos>
             </ContendorGaleria>
@@ -75,7 +73,7 @@ const ContendorGaleria = styled.div`
     flex-direction: column;
     align-items: center;
     position: relative;
-    top: 90px;
+    top: 80px;
     width: 100%;
     height: 100%;
     padding-top: 30px;

@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import theme from './../theme';
 import logo from './../assets/logo.svg'
 import iconoFacebook from './../assets/003-facebook.png';
 import iconoWhatsapp from './../assets/004-whatsapp.png';
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const ContenedorMenu = styled.div`
     width: 170px;
@@ -15,7 +15,6 @@ const ContenedorMenu = styled.div`
     background-color: ${theme.colorClaro};
     position: fixed;
     top: 90px;
-    right: -300px;
     z-index: 101;
     overflow: hidden;
     transition: .7s all ease;
@@ -51,11 +50,22 @@ const ContenedorMenu = styled.div`
         bottom: -85px;
         left: 8px;
     }
+
+    @media screen and (min-width: 800px){
+        display: none;
+    }
+    
 `
 
 const MenuMobile = ({estadoMueble}) => {
 
+    const navegation = useParams();
+    const [ocultar, cambiarOcultar] = useState(true);
+
     useEffect(()=>{
+        if(navegation.condicion === 'catalogos'){
+            cambiarOcultar(false)
+        }
         if(estadoMueble===true){
             const menu = document.getElementById('contenedorMenu');
             menu.style.right = "0px";
@@ -71,7 +81,10 @@ const MenuMobile = ({estadoMueble}) => {
             <div className="enlaces">
                 <nav>
                     <Link to={"/sobre-nosotros"}>Sobre Nosotros</Link>
-                    <Link to={"/catalogos"} href="#">Cátalogos</Link>
+                    {
+                        ocultar &&
+                        <Link to={"/catalogos"} className="categoria">Cátalogos</Link>
+                    }
                 </nav>
                 <span className="redes">
                     <a href="https://www.facebook.com/MramirezSarchi/"><img className="icon" src={iconoFacebook} alt="Facebook Muebles Ramirez"/></a>

@@ -19,6 +19,7 @@ const Main = styled.main`
             margin-top: 33px;
             margin-bottom: 33px;
             color: #000;
+            text-transform: uppercase;
         }
         @media screen and (min-width: 800px){
             h2{
@@ -36,6 +37,12 @@ const Main = styled.main`
         align-items: center;
         top: 80px;
     }
+
+    @media screen and (min-width: 600px){
+        h2{
+                font-size: 40px;
+            } 
+    }
 `
 const ContenedorCatalogos = styled.div`
     width: 100%;
@@ -43,14 +50,19 @@ const ContenedorCatalogos = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: row;
     flex-wrap: wrap;
-    padding-bottom: 30px;
+    padding: 30px 0px 30px 0px;
     a{
         color: #000;
         text-decoration: none;
     }
     a:hover{
         text-decoration: underline;
+    }
+
+    @media screen and (min-width: 800px){
+        width: 60%;
     }
 `
 

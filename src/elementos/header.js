@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import theme from "../theme";
 import logo from "./../assets/logo.svg";
@@ -7,8 +7,15 @@ import MenuMobile from "../componentes/MenuMobile";
 import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
+    const [activar, cambiarActivar] = useState(false);
     const [num, cambiarNum] = useState(false);
     const navigate = useNavigate();
+
+    useEffect(()=>{
+        if(navigate.condicion === 'Catalogos'){
+            cambiarActivar(true)
+        }
+    },[])
 
     const handlePosition = (x) => {
         if(x === false){
@@ -43,8 +50,13 @@ const Header = () => {
                     <img onClick={()=>handlePosition(num)} id="iconMueble" src={iconoMueble} alt="Icono menu"/>
                 </ContendorIconoNav>
                 <ContenedorMenu>
-                    <Link to="/sobre-nosotros">Sobre Nosotros</Link>
-                    <Link to="/catalogos">Catalogos</Link>
+                    <Link to="/sobre-nosotros" onMouseOver={()=>cambiarActivar(false)} onMouseOut={()=>cambiarActivar(true)}>Sobre Nosotros</Link>
+                    {
+                        activar ?
+                         <Link to="/catalogos" className="activate">Catalogos</Link>
+                        :
+                         <Link to="/catalogos">Catalogos</Link>
+                    }
                 </ContenedorMenu>
             </ContenedorHeader>
             <MenuMobile estadoMueble={num}/>
@@ -131,6 +143,10 @@ const ContenedorMenu = styled.div`
             padding-right: 10px;
         }
         a:hover{
+            border-bottom: 3px solid ${theme.colorUno};
+            background-color: ${theme.colorDosAlfa};
+        }
+        .activate{
             border-bottom: 3px solid ${theme.colorUno};
             background-color: ${theme.colorDosAlfa};
         }

@@ -8,6 +8,8 @@ import favicon from './assets/logo.svg';
 import Catalogos from './componentes/Catalogos';
 import Galeria from './componentes/Galeria';
 import Error404 from './componentes/Error404';
+import { ProveedorCargando } from './contexto/contextoCargando';
+import Cargando from './componentes/Cargando';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,12 +19,15 @@ root.render(
       <link rel='shortcut icon' href={favicon} type='image/x-icon'/>
     </Helmet>
       <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<App />}/>
-          <Route path='/catalogos' element={<Catalogos />}/>
-          <Route path='/catalogos/:id/:index' element={<Galeria />}/>
-          <Route path='/*' element={<Error404 />}/>
-        </Routes>
+        <ProveedorCargando>
+          <Routes>
+            <Route path='/' element={<App />}/>
+            <Route path='/:condicion' element={<Catalogos />}/>
+            <Route path='/catalogos/:id/:index' element={<Galeria />}/>
+            <Route path='/sobre-nosotros' element={<Cargando />}/>
+            <Route path='/*' element={<Error404 />}/>
+          </Routes>
+        </ProveedorCargando>
       </BrowserRouter>
   </React.StrictMode>
 );
